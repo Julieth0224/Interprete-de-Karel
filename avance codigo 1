@@ -1,0 +1,76 @@
+
+import turtle
+
+wn = turtle.Screen()
+wn.setup (628,628)
+Karel = turtle.Turtle()
+
+wn.bgpic('cuadricula.gif')
+Karel.shapesize(4)
+Karel.penup()
+#Karel.goto(-280,-305)
+
+def razon(steps):
+    distance=-290
+    if Karel.heading()==90:
+        Karel.right(90)
+    if steps<=2:
+        Times=distance+(steps*57)
+        Karel.goto(Times,-305 + 54)
+    elif 2<steps<=4:
+        Times=distance+(steps*68)
+        Karel.goto(Times,-305 + 54)
+    elif 4<steps<=10:
+        Times=distance+(steps*68)
+        Karel.goto(Times,-305 + 54)     
+        
+        
+def razonv(steps):
+    distance=-290
+    if Karel.heading()==0:
+        Karel.left(90)
+    if steps<=2:
+        Times=distance+(steps*57)
+        Karel.goto(-310 + 57,Times)
+        
+    elif 2<steps<=4:
+        Times=distance+(steps*67.5)
+        Karel.goto(-310 + 57 ,Times)
+    elif 4<steps<=10:
+        Times=distance+(steps*67.5)
+        Karel.goto(-310 + 57,Times)  
+
+def clic(x,y):#método para que el sistema reconozca cajas vectoriales para que el mouse detecte una caja y karel vaya ala coordenada adecuada
+    l=-260
+    h=-266.5
+    if -260<x<-230 and -266.5<y<-236.5:
+        Karel.goto(-237,-254)
+    if -195<x<-165 and -269<y<-241:
+        Karel.goto(-180,-254)
+    if -138<x<-107 and -254 - 15<y<-254 + 15:
+        Karel.goto(-123,-254)
+    if -260<x<-230 and -266.5<y<-236.5:
+        Karel.goto(-237,-255)
+    if l-(-57*5)-15<x<l-(-57*5)+15 and h-(-57*5)-15<x<h-(-57*5)+15:
+        Karel.goto(l-(-57*5)+20,-255)
+
+def h1(x, y):
+    wn.title("Click at {0}, {1}".format(x, y))
+    Karel.goto(x, y)
+
+
+razon(1)
+razonv(1) 
+razon(6)    
+
+wn.onclick(clic)  
+#razon(0)
+#screen.addshape("Robot.png")
+#Karel.shape("Robot.png")
+wn.listen()
+wn.mainloop()
+turtle.done()
+turtle.bye()
+
+#-305 es el panel inferior del muro de karel
+#-310 es el panel izquierdo del muro de karel 
