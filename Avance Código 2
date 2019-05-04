@@ -1,0 +1,331 @@
+
+
+import turtle
+
+wn = turtle.Screen()
+wn.setup (628,628)
+Karel = turtle.Turtle()
+
+wn.bgpic('cuadricula.gif')
+Karel.shapesize(4)
+Karel.penup()
+#Karel.goto(-280,-305)
+
+def razon(steps):
+    distance=-290
+    if Karel.heading()==90:
+        Karel.right(90)
+    if steps<=2:
+        Times=distance+(steps*57)
+        Karel.goto(Times,-305 + 54)
+    elif 2<steps<=4:
+        Times=distance+(steps*68)
+        Karel.goto(Times,-305 + 54)
+    elif 4<steps<=10:
+        Times=distance+(steps*68)
+        Karel.goto(Times,-305 + 54)     
+        
+        
+def razonv(steps):
+    distance=-290
+    if Karel.heading()==0:
+        Karel.left(90)
+    if steps<=2:
+        Times=distance+(steps*57)
+        Karel.goto(-310 + 57,Times)
+    elif 2<steps<=4:
+        Times=distance+(steps*67.5)
+        Karel.goto(-310 + 57 ,Times)
+    elif 4<steps<=10:
+        Times=distance+(steps*67.5)
+        Karel.goto(-310 + 57,Times)  
+
+def situacion_ini(x,y):#método para que el sistema reconozca cajas vectoriales para que el mouse detecte una caja y karel vaya ala coordenada adecuada
+    l=-256
+    h=-256
+    if l-30<x<l+30 and h-30<y<h+30:
+        Karel.goto(l,-256)
+    if l-30<x<l+30 and -200-30<y<-200+30:
+        Karel.goto(l,-200)
+    if l-30<x<l+30 and -144-30<y<-144+30:
+        Karel.goto(l,-144)
+    if l-30<x<l+30 and -86-30<y<-86+30:
+        Karel.goto(l,-86)
+    if l-30<x<l+30 and -30-30<y<-30+30:
+        Karel.goto(l,-30)
+    if l-30<x<l+30 and 27-30<y<27+30:
+        Karel.goto(l,27)
+    if l-30<x<l+30 and 83-30<y<83+30:
+        Karel.goto(l,83)
+    if l-30<x<l+30 and 141-30<y<141+30:
+        Karel.goto(l,141)
+    if l-30<x<l+30 and 198-30<y<198+30:
+        Karel.goto(l,198)
+    if l-30<x<l+30 and 256-30<y<256+30:
+        Karel.goto(l,256)
+        
+    #######################################
+    
+    if -198-30<x<-198+30 and h-30<y<h+30:
+        Karel.goto(-198,-256)
+    if -198-30<x<-198+30 and -200-30<y<-200+30:
+        Karel.goto(-198,-200)
+    if -198-30<x<-198+30 and -144-30<y<-144+30:
+        Karel.goto(-198,-144)
+    if -198-30<x<-198+30 and -86-30<y<-86+30:
+        Karel.goto(-198,-86)
+    if -198-30<x<-198+30 and -30-30<y<-30+30:
+        Karel.goto(-198,-30)
+    if -198-30<x<-198+30 and 27-30<y<27+30:
+        Karel.goto(-198,27)
+    if -198-30<x<-198+30 and 83-30<y<83+30:
+        Karel.goto(-198,83)
+    if -198-30<x<-198+30 and 141-30<y<141+30:
+        Karel.goto(-198,141)
+    if -198-30<x<-198+30 and 198-30<y<198+30:
+        Karel.goto(-198,198)
+    if -198-30<x<-198+30 and 256-30<y<256+30:
+        Karel.goto(-198,256)
+    
+    #######################################
+    
+    if -140-30<x<-140+30 and h-30<y<h+30:
+        Karel.goto(-140,-256)
+    if -140-30<x<-140+30 and -200-30<y<-200+30:
+        Karel.goto(-140,-200)
+    if -140-30<x<-140+30 and -144-30<y<-144+30:
+        Karel.goto(-140,-144)
+    if -140-30<x<-140+30 and -86-30<y<-86+30:
+        Karel.goto(-140,-86)
+    if -140-30<x<-140+30 and -30-30<y<-30+30:
+        Karel.goto(-140,-30)
+    if -140-30<x<-140+30 and 27-30<y<27+30:
+        Karel.goto(-140,27)
+    if -140-30<x<-140+30 and 83-30<y<83+30:
+        Karel.goto(-140,83)
+    if -140-30<x<-140+30 and 141-30<y<141+30:
+        Karel.goto(-140,141)
+    if -140-30<x<-140+30 and 198-30<y<198+30:
+        Karel.goto(-140,198)
+    if -140-30<x<-140+30 and 256-30<y<256+30:
+        Karel.goto(-140,256)
+    
+    #######################################
+    
+    if -84-30<x<-84+30 and h-30<y<h+30:
+        Karel.goto(-84,-256)
+    if -84-30<x<-84+30 and -200-30<y<-200+30:
+        Karel.goto(-84,-200)
+    if -84-30<x<-84+30 and -144-30<y<-144+30:
+        Karel.goto(-84,-144)
+    if -84-30<x<-84+30 and -86-30<y<-86+30:
+        Karel.goto(-84,-86)
+    if -84-30<x<-84+30 and -30-30<y<-30+30:
+        Karel.goto(-84,-30)
+    if -84-30<x<-84+30 and 27-30<y<27+30:
+        Karel.goto(-84,27)
+    if -84-30<x<-84+30 and 83-30<y<83+30:
+        Karel.goto(-84,83)
+    if -84-30<x<-84+30 and 141-30<y<141+30:
+        Karel.goto(-84,141)
+    if -84-30<x<-84+30 and 198-30<y<198+30:
+        Karel.goto(-84,198)
+    if -84-30<x<-84+30 and 256-30<y<256+30:
+        Karel.goto(-84,256)
+    
+    #######################################
+    
+    if -30-30<x<-30+30 and h-30<y<h+30:
+        Karel.goto(-30,-256)
+    if -30-30<x<-30+30 and -200-30<y<-200+30:
+        Karel.goto(-30,-200)
+    if -30-30<x<-30+30 and -144-30<y<-144+30:
+        Karel.goto(-30,-144)
+    if -30-30<x<-30+30 and -86-30<y<-86+30:
+        Karel.goto(-30,-86)
+    if -30-30<x<-30+30 and -30-30<y<-30+30:
+        Karel.goto(-30,-30)
+    if -30-30<x<-30+30 and 27-30<y<27+30:
+        Karel.goto(-30,27)
+    if -30-30<x<-30+30 and 83-30<y<83+30:
+        Karel.goto(-30,83)
+    if -30-30<x<-30+30 and 141-30<y<141+30:
+        Karel.goto(-30,141)
+    if -30-30<x<-30+30 and 198-30<y<198+30:
+        Karel.goto(-30,198)
+    if -30-30<x<-30+30 and 256-30<y<256+30:
+        Karel.goto(-30,256)
+   
+   #######################################
+
+    if 28-30<x<28+30 and h-30<y<h+30:
+        Karel.goto(28,-256)
+    if 28-30<x<28+30 and -200-30<y<-200+30:
+        Karel.goto(28,-200)
+    if 28-30<x<28+30 and -144-30<y<-144+30:
+        Karel.goto(28,-144)
+    if 28-30<x<28+30 and -86-30<y<-86+30:
+        Karel.goto(28,-86)
+    if 28-30<x<28+30 and -30-30<y<-30+30:
+        Karel.goto(28,-30)
+    if 28-30<x<28+30 and 27-30<y<27+30:
+        Karel.goto(28,27)
+    if 28-30<x<28+30 and 83-30<y<83+30:
+        Karel.goto(28,83)
+    if 28-30<x<28+30 and 141-30<y<141+30:
+        Karel.goto(28,141)
+    if 28-30<x<28+30 and 198-30<y<198+30:
+        Karel.goto(28,198)
+    if 28-30<x<28+30 and 256-30<y<256+30:
+        Karel.goto(28,256)
+    
+    #######################################
+
+
+    #######################################
+    
+    if 85-30<x<85+30 and h-30<y<h+30:
+        Karel.goto(85,-256)
+    if 85-30<x<85+30 and -200-30<y<-200+30:
+        Karel.goto(85,-200)
+    if 85-30<x<85+30 and -144-30<y<-144+30:
+        Karel.goto(85,-144)
+    if 85-30<x<85+30 and -86-30<y<-86+30:
+        Karel.goto(85,-86)
+    if 85-30<x<85+30 and -30-30<y<-30+30:
+        Karel.goto(85,-30)
+    if 85-30<x<85+30 and 27-30<y<27+30:
+        Karel.goto(85,27)
+    if 85-30<x<85+30 and 83-30<y<83+30:
+        Karel.goto(85,83)
+    if 85-30<x<85+30 and 141-30<y<141+30:
+        Karel.goto(85,141)
+    if 85-30<x<85+30 and 198-30<y<198+30:
+        Karel.goto(85,198)
+    if 85-30<x<85+30 and 256-30<y<256+30:
+        Karel.goto(85,256)
+    
+    #######################################
+    
+    if 140-30<x<140+30 and -256-30<y<-256+30:
+        Karel.goto(140,-256)
+    if 140-30<x<140+30 and -200-30<y<-200+30:
+        Karel.goto(140,-200)
+    if 140-30<x<140+30 and -144-30<y<-144+30:
+        Karel.goto(140,-144)
+    if 140-30<x<140+30 and -86-30<y<-86+30:
+        Karel.goto(140,-86)
+    if 140-30<x<140+30 and -30-30<y<-30+30:
+        Karel.goto(140,-30)
+    if 140-30<x<140+30 and 27-30<y<27+30:
+        Karel.goto(140,27)
+    if 140-30<x<140+30 and 83-30<y<83+30:
+        Karel.goto(140,83)
+    if 140-30<x<140+30 and 141-30<y<141+30:
+        Karel.goto(140,141)
+    if 140-30<x<140+30 and 198-30<y<198+30:
+        Karel.goto(140,198)
+    if 140-30<x<140+30 and 256-30<y<256+30:
+        Karel.goto(140,256)
+    
+    #######################################
+    
+    if 200-30<x<200+30 and h-30<y<h+30:
+        Karel.goto(200,-256)
+    if 200-30<x<200+30 and -200-30<y<-200+30:
+        Karel.goto(200,-200)
+    if 200-30<x<200+30 and -144-30<y<-144+30:
+        Karel.goto(200,-144)
+    if 200-30<x<200+30 and -86-30<y<-86+30:
+        Karel.goto(200,-86)
+    if 200-30<x<200+30 and -30-30<y<-30+30:
+        Karel.goto(200,-30)
+    if 200-30<x<200+30 and 27-30<y<27+30:
+        Karel.goto(200,27)
+    if 200-30<x<200+30 and 83-30<y<83+30:
+        Karel.goto(200,83)
+    if 200-30<x<200+30 and 141-30<y<141+30:
+        Karel.goto(200,141)
+    if 200-30<x<200+30 and 198-30<y<198+30:
+        Karel.goto(200,198)
+    if 200-30<x<200+30 and 256-30<y<256+30:
+        Karel.goto(200,256)
+    
+    #######################################
+    
+    if 254-30<x<254+30 and h-30<y<h+30:
+        Karel.goto(254,-256)
+    if 254-30<x<254+30 and -200-30<y<-200+30:
+        Karel.goto(254,-200)
+    if 254-30<x<254+30 and -144-30<y<-144+30:
+        Karel.goto(254,-144)
+    if 254-30<x<254+30 and -86-30<y<-86+30:
+        Karel.goto(254,-86)
+    if 254-30<x<254+30 and -30-30<y<-30+30:
+        Karel.goto(254,-30)
+    if 254-30<x<254+30 and 27-30<y<27+30:
+        Karel.goto(254,27)
+    if 254-30<x<254+30 and 83-30<y<83+30:
+        Karel.goto(254,83)
+    if 254-30<x<254+30 and 141-30<y<141+30:
+        Karel.goto(254,141)
+    if 254-30<x<254+30 and 198-30<y<198+30:
+        Karel.goto(254,198)
+    if 254-30<x<254+30 and 256-30<y<256+30:
+        Karel.goto(254,256)
+
+def arriba():
+    Karel.setheading(90)
+    
+
+def derecha():
+    Karel.setheading(0) 
+
+def izquier():
+    Karel.setheading(180)
+
+def abajo():
+    Karel.setheading(270)
+    
+
+wn.onkey(arriba,"w")
+wn.onkey(derecha,"d")
+wn.onkey(izquier,"a")
+
+
+def h1(x, y):
+    wn.title("Click at {0}, {1}".format(x, y))
+    Karel.goto(x, y)
+
+def lectura_de_codigo():
+    lista_metodos=["turnleft;\n","move;\n"]
+    archivo_karel = input("dime el nombre del archivo")
+    myfile=open(archivo_karel,"r")
+    lineas_por_leer= myfile.readlines()
+    print(lineas_por_leer)
+    for g in lineas_por_leer:
+        if g==lista_metodos[0]:
+            Karel.left(90)
+        elif g == lista_metodos[1]:
+            Karel.forward(58)
+    
+    myfile.close()
+
+
+wn.onkey(lectura_de_codigo,"space")
+wn.onkey(abajo,"s")
+wn.onclick(situacion_ini)  
+razonv(0)
+
+#screen.addshape("Robot.png")
+#Karel.shape("Robot.png")
+
+wn.listen()
+wn.mainloop()
+turtle.done()
+turtle.bye()
+
+#-305 es el panel inferior del muro de karel
+#-310 es el panel izquierdo del muro de karel 
+
+ 
