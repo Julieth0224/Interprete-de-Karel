@@ -1,0 +1,380 @@
+
+
+import turtle
+
+wn = turtle.Screen()
+wn.setup (628,628)
+Karel = turtle.Turtle()
+
+wn.bgpic('cuadricula.gif')
+Karel.shapesize(4)
+Karel.penup()
+#Karel.goto(-280,-305)
+
+"""INITIAL SITUATION"""
+
+"""Ubicacion y direccion de Karel"""
+
+"""Ubicacion"""
+def razon(steps):
+    distance=-290
+    if Karel.heading()==90:
+        Karel.right(90)
+    if steps<=2:
+        Times=distance+(steps*57)
+        Karel.goto(Times,-305 + 54)
+    elif 2<steps<=4:
+        Times=distance+(steps*68)
+        Karel.goto(Times,-305 + 54)
+    elif 4<steps<=10:
+        Times=distance+(steps*68)
+        Karel.goto(Times,-305 + 54)     
+        
+        
+def razonv(steps):
+    distance=-290
+    if Karel.heading()==0:
+        Karel.left(90)
+    if steps<=2:
+        Times=distance+(steps*57)
+        Karel.goto(-310 + 57,Times)
+    elif 2<steps<=4:
+        Times=distance+(steps*67.5)
+        Karel.goto(-310 + 57 ,Times)
+    elif 4<steps<=10:
+        Times=distance+(steps*67.5)
+        Karel.goto(-310 + 57,Times)  
+
+
+def nuevo_clic(x,y):
+    lista_de_x=[-256,-199,-142,-85,-28,29,86,143,200,257]
+ 
+    lista_de_y=[-256,-199,-142,-85,-28,29,86,143,200,257]
+    for coordenadax in lista_de_x:
+        for coordenaday in lista_de_y:
+            if  coordenadax-30<x<coordenadax+30 and coordenaday-30<y<coordenaday+30:
+                Karel.goto(coordenadax,coordenaday)
+            
+            
+#def lectura_de_documento():
+#    metodos ={}
+#    lista_metodos = []
+#    lista_metodos.append("turnleft;\n")
+#    metodos[turnleft]= lista_metodos
+#    metodos[move]=["move;\n"]
+#    archivo_karel = input("dime el nombre del archivo")
+#    try:
+#        myfile=open(archivo_karel,"r")    
+#    except:
+#        myfile=open(archivo_karel+".txt","r")     
+#    lineas_por_leer= myfile.readlines()
+#    for g in lineas_por_leer:
+#        for metodo in metodos[g]:
+                       
+
+
+"""Dirección de Karel"""
+
+def arriba():
+    Karel.setheading(90)
+    
+def derecha():
+    Karel.setheading(0) 
+    
+def izquierda():
+    Karel.setheading(180)
+    
+def abajo():
+    Karel.setheading(270)
+
+def direccion_karel():
+    wn.onkey(arriba,"w")
+    wn.onkey(derecha,"d")
+    wn.onkey(izquierda,"a")
+    wn.onkey(abajo,"s")
+
+
+
+#BEEPERS
+#Tortuga de beepers
+    
+beep = turtle.Turtle()
+beep.shapesize(1)
+beep.penup()
+beep.goto(-256,-256)
+
+coordenadas_beeper = []
+#Poner los beepers
+def beeper_1():
+    """Funcion para dibujar un beeper en forma de circulo"""
+    beep.setheading(270)
+    beep.forward(10)
+    beep.setheading(0)
+    beep.pendown()
+    beep.color("red")# 1 beeper = Rojo
+    beep.begin_fill()
+    beep.circle(10)
+    beep.end_fill()
+    beep.penup()
+    beep.setheading(90)
+    beep.forward(10)
+    b = beep.position()
+    coordenadas_beeper.append(b)
+    print(coordenadas_beeper)
+
+def beeper_2():
+    """Funcion para dibujar dos beepers en forma de circulo"""
+    beep.setheading(270)
+    beep.forward(10)
+    beep.setheading(0)
+    beep.pendown()
+    beep.color("purple")# 2 beepers = Morado
+    beep.begin_fill()
+    beep.circle(10)
+    beep.end_fill()
+    beep.penup()
+    beep.setheading(90)
+    beep.forward(10)
+    
+def beeper_3():
+    """Funcion para dibujar tres beepers en forma de circulo"""
+    beep.setheading(270)
+    beep.forward(10)
+    beep.setheading(0)
+    beep.pendown()
+    beep.color("lightblue")# 3 beepers = Azul
+    beep.begin_fill()
+    beep.circle(10)
+    beep.end_fill()
+    beep.penup()
+    beep.setheading(90)
+    beep.forward(10)
+    
+def beeper_4():
+    """Funcion para dibujar cuatro beepers en forma de circulo"""
+    beep.setheading(270)
+    beep.forward(10)
+    beep.setheading(0)
+    beep.pendown()
+    beep.color("yellow")# 4 beepers = Amarillo
+    beep.begin_fill()
+    beep.circle(10)
+    beep.end_fill()
+    beep.penup()
+    beep.setheading(90)
+    beep.forward(10)
+    
+def beeper_5(): 
+    """Funcion para dibujar cinco beepers en forma de circulo"""
+    beep.setheading(270)
+    beep.forward(10)
+    beep.setheading(0)
+    beep.pendown()
+    beep.color("lightpink")# 5 beepers = Rosado
+    beep.begin_fill()
+    beep.circle(10)
+    beep.end_fill()
+    beep.penup()
+    beep.setheading(90)
+    beep.forward(10)
+
+def NoBeeper():
+    """Funcion para dibujar un circulo negro para representar
+       que se recogieron todos los beeepers de la interseccion"""
+    beep.goto(Karel.position())
+    beep.setheading(270)
+    beep.forward(10)
+    beep.setheading(0)
+    beep.pendown()
+    beep.color("black")
+    beep.begin_fill()
+    beep.circle(11)
+    beep.end_fill()
+    beep.penup()
+    beep.setheading(90)
+    beep.forward(10)        
+
+
+#Ubicacion de la tortuga que dibuja los beepers                
+def derecha_beepers():
+    """Funcion que mueve hacia la derecha la tortuga de los beepers"""
+    beep.setheading(0)
+    beep.forward(57)
+    
+def arriba_beepers():
+    """Funcion que mueve hacia arriba la tortuga de los beepers"""
+    beep.setheading(90)
+    beep.forward(57)
+    
+def izquierda_beepers():
+    """Funcion que mueve hacia la izquiera la tortuga de los beepers"""
+    beep.setheading(180)
+    beep.forward(57)
+
+def abajo_beepers():
+    """Funcion que mueve hacia abajo la tortuga de los beepers"""
+    beep.setheading(270)
+    beep.forward(57)
+
+
+#Funcion final de poner los beepers en la situacion inicial
+def initial_beepers():
+    """FUNCION QUE PONE LOS BEEPERS"""
+    wn.onkey(beeper_1, "1")#La tecla 1 dibuja el beeper en la interseccion  
+                           #donde se encuentre beep
+    wn.onkey(izquierda_beepers, "Left")#La flecha izquierda hace que se mueva 
+                                       #beep una interseccion hacia la 
+                                       #izquierda
+    wn.onkey(arriba_beepers, "Up")#La flecha de arriba hace que se mueva 
+                                  #beep una interseccion hacia arriba
+    wn.onkey(derecha_beepers, "Right")#La flecha derecha hace que se mueva 
+                                      #beep una interseccion hacia la 
+                                      #derecha
+    wn.onkey(abajo_beepers, "Down")#La flecha de abajo hace que se mueva 
+                                   #beep una interseccion hacia abajo
+    wn.onkey(beeper_2, "2")#La tecla 2 dibuja los beepers en la interseccion  
+                           #donde se encuentre beep
+    wn.onkey(beeper_3, "3")#La tecla 3 dibuja los beepers en la interseccion  
+                           #donde se encuentre beep
+    wn.onkey(beeper_4, "4")#La tecla 4 dibuja los beepers en la interseccion  
+                           #donde se encuentre beep
+    wn.onkey(beeper_5, "5")#La tecla 5 dibuja los beepers en la interseccion  
+                           #donde se encuentre beep
+
+#MUROS    
+#Tortuga de paredes
+
+wall = turtle.Turtle()
+wall.hideturtle()
+
+
+#Realizar los muros
+
+def pared():
+    """Funcion que activa la tortuga wall y esconde la tortuga de beep"""
+    beep.hideturtle()
+    print(coordenadas_beeper)
+    wall.showturtle()
+    wall.shapesize(1)
+    wall.penup()
+    wall.goto(-228.5,-228.5)
+
+def muro():
+    """Funcion que hace que wall dibuje los muros mientras se mueve"""
+    wall.pendown()
+    wall.pensize(2)
+    wall.pencolor("green")
+
+def nada():
+    """Funcion que hace que wall no dibuje los muros mientras se mueve"""
+    wall.penup()
+
+
+#Ubicacion de la tortuga que dibuja las paredes
+def derecha_muros():
+    """Funcion que mueve hacia la derecha la tortuga de los muros"""
+    wall.setheading(0)
+    wall.forward(57)
+    
+def arriba_muros():
+    """Funcion que mueve hacia arriba la tortuga de los muros"""
+    wall.setheading(90)
+    wall.forward(57)
+    
+def izquierda_muros():
+    """Funcion que mueve hacia la izquierda la tortuga de los muros"""
+    wall.setheading(180)
+    wall.forward(57)
+
+def abajo_muros():
+    """Funcion que mueve hacia la abajo la tortuga de los muros"""
+    wall.setheading(270)
+    wall.forward(57)             
+
+    
+#Funcion final de poner los muros en la situacion inicial 
+def initial_walls():
+    """FUNCION QUE PONE LOS MUROS"""
+    wn.onkey(pared, "p")#La letra p activa la tortuga
+    wn.onkey(muro, "m")#La letra m activa el lapiz para dibujar los muros
+    wn.onkey(nada, "n")#La letra n desactiva el lapiz para poder manejar la  
+                       #tortuga sin dejar rastro
+    wn.onkey(izquierda_muros, "j")#La letra j pone y mueve la tortuga hacia  
+                                  #la izquierda
+    wn.onkey(arriba_muros, "i")#La letra i pone y mueve la tortuga hacia    
+                               #arriba
+    wn.onkey(derecha_muros, "l")#La letra l pone y mueve la tortuga hacia   
+                                #la derecha
+    wn.onkey(abajo_muros, "k")#La letra k pone y mueve la tortuga hacia    
+                              #abajo 
+    
+    
+    
+#LECTURA DEL CODIGO DE KAREL
+#Se comienza a leer el codigo desde un archivo
+def lectura_de_codigo():
+    """Funcion que pide al usuario un codigo legible por Karel y lo ejecuta"""
+    wall.hideturtle()
+    lista_metodos=["\tturnleft;\n","\tmove;\n","\tpickbeeper;\n","\tputbeeper;\n"]
+    archivo_karel = input("Dime el nombre del archivo: ")
+    myfile=open(archivo_karel,"r")
+    lineas_por_leer= myfile.readlines()
+    print(lineas_por_leer)
+    for g in lineas_por_leer:
+        if g==lista_metodos[0]:
+            Karel.left(90)
+        elif g == lista_metodos[1]:
+            Karel.forward(57)
+        elif g == lista_metodos[2]:
+            print(coordenadas_beeper)
+            print(Karel.position())
+            p = Karel.position()
+            p1 = (p[0]//1)
+            p2 = (p[1]//1)
+            for q in (coordenadas_beeper):
+                q1 = (q[0]//1)
+                q2 = (q[1]//1)
+                print("{0}{1}{2}{3}".format(p1,q1,p2,q2))
+                if q1-2 <p1<  q1+2 and q2-2<p2< q2+2:
+                    NoBeeper()
+        elif g == lista_metodos[3]:
+            beep.goto(Karel.position())
+            beeper_1()
+    myfile.close()
+
+
+
+
+"""INICIO DE LA EJECUCION DE LA SITUACION INICIAL"""
+razonv(0)
+Karel.hideturtle()
+
+Karel.goto(-256,-256)
+
+Karel.setheading(0)
+
+Karel.showturtle()
+
+wn.onclick(nuevo_clic)
+
+direccion_karel()
+
+initial_beepers()
+
+initial_walls()
+
+
+"""INICIO DE LA EJECUCION DEL CODIGO DADO POR EL USUARIO"""
+wn.onkey(lectura_de_codigo,"space")
+
+
+
+"""FIN DE LA EJECUCION"""
+
+wn.listen()
+wn.mainloop()
+turtle.done()
+turtle.bye()
+
+#-305 es el panel inferior del muro de karel
+#-310 es el panel izquierdo del muro de karel 
